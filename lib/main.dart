@@ -146,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
-            if (!isLandscape) TotalExpenditure(_totalTranscations),
+            if (!isLandscape) totalAmount,
             if (!isLandscape)
               Container(
                 height: (MediaQuery.of(context).size.height -
