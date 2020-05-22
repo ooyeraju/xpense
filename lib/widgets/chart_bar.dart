@@ -3,50 +3,42 @@ import 'package:flutter/material.dart';
 class ChartBar extends StatelessWidget {
   final String label;
   final int spendingAmount;
-  final double spendingPercentOfTotal;
+  final double spendingPctOfTotal;
 
-  ChartBar(this.label, this.spendingAmount, this.spendingPercentOfTotal);
+  ChartBar(this.label, this.spendingAmount, this.spendingPctOfTotal);
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (ctx, constrains) {
+      builder: (ctx, constraints) {
         return Column(
           children: <Widget>[
-//            Container(
-//              height: constrains.maxHeight * 0.1,
-//              child: FittedBox(
-//                child: Text('Total  expense'),
-//              ),
-//            ),
             Container(
-              height: constrains.maxHeight * 0.15,
+              height: constraints.maxHeight * 0.15,
               child: FittedBox(
-                child: Text('₹$spendingAmount '),
+                child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
               ),
             ),
             SizedBox(
-              height: constrains.maxHeight * 0.05,
+              height: constraints.maxHeight * 0.05,
             ),
             Container(
-              height: constrains.maxHeight * 0.6,
+              height: constraints.maxHeight * 0.6,
               width: 10,
               child: Stack(
                 children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
-                      // border: Border.all(color: Colors.grey, width: 1),
+                      border: Border.all(color: Colors.grey, width: 1.0),
                       color: Color.fromRGBO(220, 220, 220, 1),
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   FractionallySizedBox(
-                    // alignment: Alignment.bottomCenter,
-                    heightFactor: spendingPercentOfTotal,
+                    heightFactor: spendingPctOfTotal,
                     child: Container(
                       decoration: BoxDecoration(
-                        // border: Border.all(color:Colors.grey, width: 1),
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -55,10 +47,10 @@ class ChartBar extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: constrains.maxHeight * 0.05,
+              height: constraints.maxHeight * 0.05,
             ),
             Container(
-              height: constrains.maxHeight * 0.15,
+              height: constraints.maxHeight * 0.15,
               child: FittedBox(
                 child: Text(label),
               ),
